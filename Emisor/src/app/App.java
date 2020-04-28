@@ -33,5 +33,10 @@ public class App {
             default:
                 System.out.println("Opcion no valida");
         }
+
+    }
+    
+    public void menu(){
+
     }
 }
