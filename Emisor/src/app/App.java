@@ -8,10 +8,11 @@ public class App {
         System.out.print("Introduce un caracter: ");
         String LetraP; //Declara el caracter que se va a pedir
         final Scanner LetraScan = new Scanner(System.in); //Se pide el caracter
-        LetraP = LetraScan.nextLine(); //Se guarda el caracter
-        System.out.println(convBinario(LetraP.charAt(0))); //Pasa a binario);
         
-   
+        LetraP = LetraScan.nextLine(); //Se guarda el caracter
+        String numBinario = convBinario(LetraP.charAt(0)); //Pasa a binario);
+        
+        
         System.out.print("Introduce el divisor: ");
         String DivisorP;
         final Scanner DivisorScan = new Scanner(System.in);
@@ -32,18 +33,9 @@ public class App {
 
 
 
-    static public void menu(final int _opc) { // Menu opciones
-        
-        switch(_opc){
-            case 1:
-                
-                break;
-            case 2: 
-                
-                break;
-            default:
-                System.out.println("Opcion no valida");
-        }
+    static public int  menu( int _opc) { //Par o impar opciones
+    	if(_opc == 1) return 1; // Par
+    	return 0; //impar
 
     }
 
