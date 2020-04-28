@@ -7,7 +7,9 @@ public class App {
         System.out.print("Introduce el Dato: ");
         String DatoP; //Declara el dato que se va a pedir
         Scanner DatoScan=new Scanner(System.in); //Se pide el dato
-        DatoP=DatoScan.nextLine();//Se guarda el dato
+        DatoP=DatoScan.nextLine();//Se guarda el dato en un string
+        int [] Dato; //se declara el int donde sera guardado
+        
         System.out.print("Introduce el divisor: ");
         String DivisorP;
         Scanner DivisorScan=new Scanner(System.in);
