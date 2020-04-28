@@ -32,7 +32,7 @@ public class App {
 
 
 
-   static public void menu(int _opc){ //Menu opciones
+    static public void menu(int _opc){ //Menu opciones
         
         switch(_opc){
             case 1:
