@@ -3,7 +3,8 @@ package app;
 import java.util.Scanner;
 
 public class App {
-    public static void main(final String[] args) throws Exception {
+    public static void main(final String[] args) {
+
         System.out.print("Introduce un caracter: ");
         String LetraP; //Declara el caracter que se va a pedir
         final Scanner LetraScan = new Scanner(System.in); //Se pide el caracter
@@ -20,10 +21,20 @@ public class App {
         System.out.println("1. Par");
         System.out.println("2. Impar");
         System.out.print("Opcion: ");
+
+        //Opciones
         int OpcP;
         final Scanner OpcScan = new Scanner(System.in);
-        OpcP=OpcScan.nextInt();
-        switch(OpcP){
+        menu(OpcP=OpcScan.nextInt());
+
+
+    }
+
+
+
+    static public void menu(int _opc){ //Menu opciones
+        
+        switch(_opc){
             case 1:
                 
                 break;
@@ -33,10 +44,6 @@ public class App {
             default:
                 System.out.println("Opcion no valida");
         }
-
-    }
-    
-    public void menu(){
 
     }
 }
