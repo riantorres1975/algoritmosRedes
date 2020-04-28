@@ -5,13 +5,13 @@ import java.util.Scanner;
 public class App {
     public static void main(final String[] args) throws Exception {
         System.out.print("Introduce un caracter: ");
-        String LetraP;
-        final Scanner LetraScan = new Scanner(System.in);
-        LetraP = LetraScan.nextLine();
-        int LetrasA = 0;
-        LetrasA = LetraP.charAt(0);
-        String b;
-        b = Integer.toBinaryString(LetrasA);
+        String LetraP; //Declara el caracter que se va a pedir
+        final Scanner LetraScan = new Scanner(System.in); //Se pide el caracter
+        LetraP = LetraScan.nextLine(); //Se guarda el caracter
+        int LetrasA = 0; //Se declara el valor numerico que va a tomar
+        LetrasA = LetraP.charAt(0); //Pasa de ser caracter a su valor en ascii
+        String b; //Se declara el valor en binario que va a tomar
+        b = Integer.toBinaryString(LetrasA); //se trasforma a binario
         System.out.print("Introduce el divisor: ");
         String DivisorP;
         final Scanner DivisorScan = new Scanner(System.in);
