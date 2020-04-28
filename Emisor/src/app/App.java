@@ -73,7 +73,7 @@ public class App {
 		
 		for (int i = 1; i < arrayAux.length; i++) { 
 			if ((Math.ceil(Math.log(i) / Math.log(2)) - Math.floor(Math.log(i) / Math.log(2))) == 0) { 
-				arrayAux[i] = p; //paridad 1 par o impar
+				arrayAux[i] = p; //paridad 1 impar 0 par
 			} 
 			else { 
 				arrayAux[i] = (int)(numBinario.charAt(j) - '0'); 
