@@ -8,10 +8,11 @@ public class App {
         System.out.print("Introduce un caracter: ");
         String LetraP; //Declara el caracter que se va a pedir
         final Scanner LetraScan = new Scanner(System.in); //Se pide el caracter
-        LetraP = LetraScan.nextLine(); //Se guarda el caracter
-        System.out.println(convBinario(LetraP.charAt(0))); //Pasa a binario);
         
-   
+        LetraP = LetraScan.nextLine(); //Se guarda el caracter
+        String numBinario = convBinario(LetraP.charAt(0)); //Pasa a binario);
+        
+        
         System.out.print("Introduce el divisor: ");
         String DivisorP;
         final Scanner DivisorScan = new Scanner(System.in);
@@ -25,25 +26,17 @@ public class App {
         //Opciones
         int OpcP;
         final Scanner OpcScan = new Scanner(System.in);
-        menu(OpcP=OpcScan.nextInt());
+        hamming(numBinario,menu(OpcP=OpcScan.nextInt()));
+        
 
 
     }
 
 
 
-    static public void menu(final int _opc) { // Menu opciones
-        
-        switch(_opc){
-            case 1:
-                
-                break;
-            case 2: 
-                
-                break;
-            default:
-                System.out.println("Opcion no valida");
-        }
+    static public int  menu( int _opc) { //Par o impar opciones
+    	if(_opc == 1) return 1; // Par
+    	return 0; //impar
 
     }
 
@@ -55,9 +48,38 @@ public class App {
             return   numBinario;
     }
 
-    static public String hamming(String numBinario){
-        return null;
-
+    static public String hamming(String numBinario, int p){ //metodo de hamming numero binario, p paridad
+    	
+    	int tamCadena = numBinario.length(); //tamaño de la cadena 
+    	int bitR; //Bit de redundancia
+    	for(bitR =1; Math.pow(2, bitR)<(tamCadena + bitR + 1); ) bitR++;
+    	//System.out.println(bitR);
+    	
+    	int[] codiHamming = codificar(numBinario,tamCadena,bitR);
+    	
  
+    	System.out.println(codiHamming);
+    	
+    	
+    	
+        return null;
     }
+
+
+
+	private static int[] codificar(String numBinario, int tamCadena, int bitR) {
+		
+		int[] arrayAux = new int[bitR + tamCadena+ 1]; 
+		int j = 0; 
+		
+		for (int i = 1; i < arrayAux.length; i++) { 
+			if ((Math.ceil(Math.log(i) / Math.log(2)) - Math.floor(Math.log(i) / Math.log(2))) == 0) { 
+			} 
+			else { 
+				arrayAux[i] = (int)(numBinario.charAt(j) - '0'); 
+				j++; 
+			} 
+	  }
+		return  arrayAux; //retornamos el valor
+	}	
 }
