@@ -9,7 +9,8 @@ public class App {
         String LetraP; //Declara el caracter que se va a pedir
         final Scanner LetraScan = new Scanner(System.in); //Se pide el caracter
         LetraP = LetraScan.nextLine(); //Se guarda el caracter
-        convBinario(LetraP.charAt(0)); //Pasa a binario
+        System.out.println(convBinario(LetraP.charAt(0))); //Pasa a binario);
+        
    
         System.out.print("Introduce el divisor: ");
         String DivisorP;
@@ -47,7 +48,12 @@ public class App {
     }
 
     static public String  convBinario(int valorAscii){ //A binario
-
-            return   Integer.toBinaryString(valorAscii); 
+           
+            String numBinario = Integer.toBinaryString(valorAscii); 
+            String aux ="0";
+            if(numBinario.length()<8){
+                return aux+=numBinario;
+            }
+            return   numBinario;
     }
 }
