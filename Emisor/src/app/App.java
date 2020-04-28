@@ -48,7 +48,6 @@ public class App {
             return   numBinario;
     }
 
-<<<<<<< HEAD
     static public String hamming(String numBinario, int p){ //metodo de hamming numero binario, p paridad
     	
     	int tamCadena = numBinario.length(); //tamaño de la cadena 
@@ -58,15 +57,10 @@ public class App {
     	
     	int[] codiHamming = codificar(numBinario,tamCadena,bitR);
     	
-=======
     static public String hamming(String numBinario){ //metodo de hamming
         return null;
-
->>>>>>> 72b637937b93d564f98b2fdbd1d24cb768d0b16b
  
     	System.out.println(codiHamming);
-    	
-    	
     	
         return null;
     }
