@@ -34,13 +34,13 @@ public class App {
 
 
 
-    static public int  menu( int _opc) { //Par o impar opciones
+    static private int  menu( int _opc) { //Par o impar opciones
     	if(_opc == 1) return 1; // Par
     	return 0; //impar
 
     }
 
-    static public String  convBinario(int valorAscii){ //A binario
+    static private String  convBinario(int valorAscii){ //A binario
            
             String numBinario = Integer.toBinaryString(valorAscii); 
             String aux ="0";
@@ -48,32 +48,58 @@ public class App {
             return   numBinario;
     }
 
-    static public String hamming(String numBinario, int p){ //metodo de hamming numero binario, p paridad
+    static private int [] hamming(String numBinario, int p){ //metodo de hamming numero binario, p paridad
     	
     	int tamCadena = numBinario.length(); //tamaño de la cadena 
     	int bitR; //Bit de redundancia
     	for(bitR =1; Math.pow(2, bitR)<(tamCadena + bitR + 1); ) bitR++;
     	//System.out.println(bitR);
+    	//System.out.println(numBinario);
     	
-    	int[] codiHamming = codificar(numBinario,tamCadena,bitR);
+    	int[] codiHamming = codificar(numBinario,tamCadena,bitR,p);
     	
-    static public String hamming(String numBinario){ //metodo de hamming
-        return null;
- 
-    	System.out.println(codiHamming);
     	
-        return null;
+    /*	for(int i = 0; i <codiHamming.length; i++) {
+    		System.out.print(codiHamming[i]);
+    	}*/
+    	
+    	codiHamming = resul(codiHamming,bitR);
+    	/*
+    	for(int i = 0; i <codiHamming.length; i++) {
+    		System.out.print(codiHamming[i]);
+    	}*/
+    	
+    	return codiHamming;
+
     }
 
 
 
-	private static int[] codificar(String numBinario, int tamCadena, int bitR) {
+	private static int[] resul(int[] codiHamming, int bitR) {
+		
+		for (int i = 0; i < bitR; i++) { 
+			
+			int x = (int)Math.pow(2, i); 
+			for (int j = 1; j < codiHamming.length; j++) { 
+				if (((j >> i) & 1) == 1) { 
+					if (x != j) 
+						codiHamming[x] = codiHamming[x] ^ codiHamming[j]; 
+				} 
+			} 
+		} 
+		return codiHamming;
+	}
+
+
+
+	private static int[] codificar(String numBinario, int tamCadena, int bitR, int p) {
 		
 		int[] arrayAux = new int[bitR + tamCadena+ 1]; 
 		int j = 0; 
 		
 		for (int i = 1; i < arrayAux.length; i++) { 
 			if ((Math.ceil(Math.log(i) / Math.log(2)) - Math.floor(Math.log(i) / Math.log(2))) == 0) { 
+				arrayAux[i] = p; //paridad 1 par o impar
 			} 
 			else { 
 				arrayAux[i] = (int)(numBinario.charAt(j) - '0'); 
