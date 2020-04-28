@@ -54,4 +54,10 @@ public class App {
             if(numBinario.length()<8) return aux+=numBinario;
             return   numBinario;
     }
+
+    static public String hamming(String numBinario){
+        return null;
+
+ 
+    }
 }
