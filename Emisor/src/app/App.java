@@ -55,7 +55,7 @@ public class App {
             return   numBinario;
     }
 
-    static public String hamming(String numBinario){
+    static public String hamming(String numBinario){ //metodo de hamming
         return null;
 
  
