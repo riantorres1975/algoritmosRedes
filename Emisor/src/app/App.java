@@ -9,14 +9,13 @@ public class App {
         String LetraP; //Declara el caracter que se va a pedir
         final Scanner LetraScan = new Scanner(System.in); //Se pide el caracter
         LetraP = LetraScan.nextLine(); //Se guarda el caracter
-        int LetrasA = 0; //Se declara el valor numerico que va a tomar
-        LetrasA = LetraP.charAt(0); //Pasa de ser caracter a su valor en ascii
-        String b; //Se declara el valor en binario que va a tomar
-        b = Integer.toBinaryString(LetrasA); //se trasforma a binario
+        convBinario(LetraP.charAt(0)); //Pasa a binario
+   
         System.out.print("Introduce el divisor: ");
         String DivisorP;
         final Scanner DivisorScan = new Scanner(System.in);
         DivisorP = DivisorScan.nextLine();
+
         System.out.println("Seleccione el tipo de Paridad");
         System.out.println("1. Par");
         System.out.println("2. Impar");
@@ -32,7 +31,7 @@ public class App {
 
 
 
-    static public void menu(int _opc){ //Menu opciones
+    static public void menu(final int _opc) { // Menu opciones
         
         switch(_opc){
             case 1:
@@ -45,5 +44,10 @@ public class App {
                 System.out.println("Opcion no valida");
         }
 
+    }
+
+    static public String  convBinario(int valorAscii){ //A binario
+
+            return   Integer.toBinaryString(valorAscii); 
     }
 }
