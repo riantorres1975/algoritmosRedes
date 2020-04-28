@@ -34,13 +34,13 @@ public class App {
 
 
 
-    static private int  menu( int _opc) { //Par o impar opciones
+    private static int  menu( int _opc) { //Par o impar opciones
     	if(_opc == 1) return 1; // Par
     	return 0; //impar
 
     }
 
-    static private String  convBinario(int valorAscii){ //A binario
+    private static String  convBinario(int valorAscii){ //A binario
            
             String numBinario = Integer.toBinaryString(valorAscii); 
             String aux ="0";
@@ -48,7 +48,7 @@ public class App {
             return   numBinario;
     }
 
-    static private int [] hamming(String numBinario, int p){ //metodo de hamming numero binario, p paridad
+    private static int [] hamming(String numBinario, int p){ //metodo de hamming numero binario, p paridad
     	
     	int tamCadena = numBinario.length(); //tamaño de la cadena 
     	int bitR; //Bit de redundancia
