@@ -51,9 +51,7 @@ public class App {
            
             String numBinario = Integer.toBinaryString(valorAscii); 
             String aux ="0";
-            if(numBinario.length()<8){
-                return aux+=numBinario;
-            }
+            if(numBinario.length()<8) return aux+=numBinario;
             return   numBinario;
     }
 }
