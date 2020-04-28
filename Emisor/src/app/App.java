@@ -59,37 +59,13 @@ public class App {
     	int[] codiHamming = codificar(numBinario,tamCadena,bitR,p);
     	
     	
-    /*	for(int i = 0; i <codiHamming.length; i++) {
-    		System.out.print(codiHamming[i]);
-    	}*/
-    	
-    	codiHamming = resul(codiHamming,bitR);
-    	/*
-    	for(int i = 0; i <codiHamming.length; i++) {
+    	/*for(int i = 0; i <codiHamming.length; i++) {
     		System.out.print(codiHamming[i]);
     	}*/
     	
     	return codiHamming;
 
     }
-
-
-
-	private static int[] resul(int[] codiHamming, int bitR) {
-		
-		for (int i = 0; i < bitR; i++) { 
-			
-			int x = (int)Math.pow(2, i); 
-			for (int j = 1; j < codiHamming.length; j++) { 
-				if (((j >> i) & 1) == 1) { 
-					if (x != j) 
-						codiHamming[x] = codiHamming[x] ^ codiHamming[j]; 
-				} 
-			} 
-		} 
-		return codiHamming;
-	}
-
 
 
 	private static int[] codificar(String numBinario, int tamCadena, int bitR, int p) {
@@ -106,6 +82,18 @@ public class App {
 				j++; 
 			} 
 	  }
+		
+		for (int i = 0; i < bitR; i++) { 
+			
+			int x = (int)Math.pow(2, i); 
+			for (int it = 1; it < arrayAux.length; it++) { 
+				if (((it >> i) & 1) == 1) { 
+					if (x != it) 
+						arrayAux[x] = arrayAux[x] ^ arrayAux[it]; 
+				} 
+			} 
+		} 
+		
 		return  arrayAux; //retornamos el valor
 	}	
 }
