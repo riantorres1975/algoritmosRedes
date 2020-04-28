@@ -52,18 +52,17 @@ public class App {
     	
     	int tamCadena = numBinario.length(); //tamaño de la cadena 
     	int bitR; //Bit de redundancia
-    	for(bitR =1; Math.pow(2, bitR)<(tamCadena + bitR + 1); ) bitR++;
+    	for(bitR =1; Math.pow(2, bitR)<(tamCadena + bitR + 1); ) bitR++; // calculamos cuantos bits de redundancia tendremos
     	//System.out.println(bitR);
     	//System.out.println(numBinario);
-    	
+    
     	int[] codiHamming = codificar(numBinario,tamCadena,bitR,p);
-    	
     	
     	/*for(int i = 0; i <codiHamming.length; i++) {
     		System.out.print(codiHamming[i]);
     	}*/
     	
-    	return codiHamming;
+    	return codiHamming; //retornamos el arreglo de 1 y 0 ya codificado
 
     }
 
