@@ -28,10 +28,10 @@ public class App {
         final Scanner OpcScan = new Scanner(System.in);
         hamming(numBinario,menu(OpcP=OpcScan.nextInt()));
         
+        
 
 
     }
-
 
 
     private static int  menu( int _opc) { //Par o impar opciones
@@ -44,7 +44,7 @@ public class App {
            
             String numBinario = Integer.toBinaryString(valorAscii); 
             String aux ="0";
-            if(numBinario.length()<8) return aux+=numBinario;
+           if(numBinario.length()<8) return aux+=numBinario;
             return   numBinario;
     }
 
@@ -57,10 +57,12 @@ public class App {
     	//System.out.println(numBinario);
     
     	int[] codiHamming = codificar(numBinario,tamCadena,bitR,p);
+    	//System.out.println(error(codiHamming,bitR,p));
     	
-    	/*for(int i = 0; i <codiHamming.length; i++) {
+    	System.out.print("Codificación de Hamming -> ");
+    	for(int i = 1; i <codiHamming.length; i++) {
     		System.out.print(codiHamming[i]);
-    	}*/
+    	}
     	
     	return codiHamming; //retornamos el arreglo de 1 y 0 ya codificado 
 
