@@ -35,8 +35,8 @@ public class App {
 
 
     private static int  menu( int _opc) { //Par o impar opciones
-    	if(_opc == 1) return 1; // Par
-    	return 0; //impar
+    	if(_opc == 2) return 1; // impar
+    	return 0; //par
 
     }
 
@@ -62,11 +62,10 @@ public class App {
     		System.out.print(codiHamming[i]);
     	}*/
     	
-    	return codiHamming; //retornamos el arreglo de 1 y 0 ya codificado
+    	return codiHamming; //retornamos el arreglo de 1 y 0 ya codificado 
 
-    }
-
-
+   }
+    
 	private static int[] codificar(String numBinario, int tamCadena, int bitR, int p) {
 		
 		int[] arrayAux = new int[bitR + tamCadena+ 1]; 
@@ -74,7 +73,7 @@ public class App {
 		
 		for (int i = 1; i < arrayAux.length; i++) { 
 			if ((Math.ceil(Math.log(i) / Math.log(2)) - Math.floor(Math.log(i) / Math.log(2))) == 0) { 
-				arrayAux[i] = p; //paridad 1 par o impar
+				arrayAux[i] = p; //paridad 1 impar 0 par
 			} 
 			else { 
 				arrayAux[i] = (int)(numBinario.charAt(j) - '0'); 
