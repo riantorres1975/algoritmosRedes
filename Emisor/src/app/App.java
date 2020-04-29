@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class App {
     public static void main(final String[] args) {
-
+    	String codigoHamming ="";
         System.out.print("Introduce un caracter: ");
         String LetraP; //Declara el caracter que se va a pedir
         final Scanner LetraScan = new Scanner(System.in); //Se pide el caracter
@@ -26,8 +26,8 @@ public class App {
         //Opciones
         int OpcP;
         final Scanner OpcScan = new Scanner(System.in);
-        hamming(numBinario,menu(OpcP=OpcScan.nextInt()));
-        
+        codigoHamming= hamming(numBinario,menu(OpcP=OpcScan.nextInt()));
+       
         
 
 
@@ -48,10 +48,11 @@ public class App {
             return   numBinario;
     }
 
-    private static int [] hamming(String numBinario, int p){ //metodo de hamming numero binario, p paridad
+    private static String hamming(String numBinario, int p){ //metodo de hamming numero binario, p paridad
     	
     	int tamCadena = numBinario.length(); //tama√±o de la cadena 
     	int bitR; //Bit de redundancia
+    	String hammingCadena="";
     	for(bitR =1; Math.pow(2, bitR)<(tamCadena + bitR + 1); ) bitR++; // calculamos cuantos bits de redundancia tendremos
     	//System.out.println(bitR);
     	//System.out.println(numBinario);
@@ -59,12 +60,14 @@ public class App {
     	int[] codiHamming = codificar(numBinario,tamCadena,bitR,p);
     	//System.out.println(error(codiHamming,bitR,p));
     	
+    	
     	System.out.print("CodificaciÛn de Hamming -> ");
     	for(int i = 1; i <codiHamming.length; i++) {
     		System.out.print(codiHamming[i]);
+    		hammingCadena += Integer.toBinaryString(codiHamming[i]);
     	}
     	
-    	return codiHamming; //retornamos el arreglo de 1 y 0 ya codificado 
+    	return hammingCadena; //retornamos la cadena de 1 y 0 ya codificado 
 
    }
     

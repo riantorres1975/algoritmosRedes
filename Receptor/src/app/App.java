@@ -99,6 +99,8 @@ public class App {
                 System.out.println("Opcion no valida");
         }
     }
+    
+    
     static int[] divide(int dividendo[],int largo_p[], int resto[])//Metodo
      {
         int contador=0;
