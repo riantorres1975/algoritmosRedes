@@ -9,6 +9,7 @@ public class App {
         int[] resto;
         int[] crc;
         int[] divcrc;
+        int[] sinham;
         int cantdatos, divisor, rescrc;
 
         System.out.print("Introduce el Dato: ");
@@ -67,6 +68,9 @@ public class App {
         
         rescrc=cantdatos-(divisor-1);
         divcrc=new int[rescrc];//espacio donde se guardara el dato sin los bits extras
+        sinham=new int[8];
+        int q=0;
+        StringBuffer cadena = new StringBuffer();
 
         for(int i=0; i< resto.length; i++)
         {
@@ -83,8 +87,19 @@ public class App {
                 System.out.println("No hay error");
                 for(int k=0; k<divcrc.length; k++){
                     divcrc[k]=dividendo[k];
-                    System.out.print(divcrc[k]);
                 }
+                for(int k=0; k<divcrc.length; k++){
+                    if(k!=0&&k!=1&&k!=3&&k!=7){
+                        sinham[q]=divcrc[k];
+                        q++;
+                    }
+                }
+                for (int x=0;x<sinham.length;x++){
+                    cadena =cadena.append(sinham[x]);
+                }
+                int num=Integer.parseInt(cadena.toString(),2);
+                char c = (char)num;
+                System.out.println("El caracter es: "+c);
             }
         }
 
@@ -99,8 +114,6 @@ public class App {
                 System.out.println("Opcion no valida");
         }
     }
-    
-    
     static int[] divide(int dividendo[],int largo_p[], int resto[])//Metodo
      {
         int contador=0;
