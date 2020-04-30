@@ -38,7 +38,6 @@ public class App {
         int p = 0;
         final Scanner OpcScan=new Scanner(System.in);
         OpcP=OpcScan.nextInt();
-        
         switch(OpcP){
         	case 1:
         		p=0;
@@ -49,7 +48,6 @@ public class App {
         	default:
         		System.out.println("Opcion no valida");
         }
-
         for(int i=0; i<cantdatos; i++){            
             String auh=Character.toString(values[i]);
             int aux = Integer.parseInt(auh);
@@ -80,27 +78,78 @@ public class App {
         
         rescrc=cantdatos-(divisor-1);
         divcrc=new int[rescrc];//espacio donde se guardara el dato sin los bits extras
+        rescrc=cantdatos-(divisor-1);
+        divcrc=new int[rescrc];
         sinham=new int[8];
-        int q=0;
+        int q=0,r=0;
         int posErr=0;
-       
         StringBuffer cadena = new StringBuffer();
+        
+        int aux2;
+        aux2=dividendo.length-(divisor-1);
+        int[] restofinal;
+        int t=0;
+        restofinal= new int[divisor-1];
+        for(int i=aux2; i<dividendo.length;i++){
+           restofinal[t]=dividendo[i];
+           t++;
+        }
 
         for(int i=0; i< resto.length; i++)
         {
             if(resto[i]!=0)
             {
                 System.out.println("Error su resto no es 0");
+                for(int k=0; k<divcrc.length; k++){
+                    divcrc[k]=dividendo[k];
+                    //System.out.print(divcrc[k]);
+                }
                 posErr =hammingError(divcrc, 4,p);
                 corregirErr(divcrc,posErr);
-               /* for(int k=0; k<divcrc.length; k++){
-                    divcrc[k]=dividendo[k];
-                    System.out.print(divcrc[k]);
-                }*/
+                int[] res = new int[divcrc.length + restofinal.length];
+                System.arraycopy(divcrc, 0, res, 0, divcrc.length );
+                System.arraycopy( restofinal, 0, res, divcrc.length, restofinal.length );
+                for(int j=0; j<res.length; j++){
+                    resto[j] = res[j];
+                }  
+                resto=divide(res, largo_p, resto);//Se manda al metodo
+
+                for(int z=0;z<res.length;z++)           
+                {
+                    crc[z]=(res[z]^resto[z]);
+                }
+                resto=divide(crc, largo_p, resto);
+                for(int k=0; k< resto.length; k++)
+                {
+                    if(resto[k]!=0)
+                    {
+                        System.out.println("Error: Existe mas de un error");
+                        break;
+                    }
+                    if(k==resto.length-1){
+                        System.out.println("No existen errores");
+                        for(int z=0; z<divcrc.length; z++){
+                            divcrc[z]=res[z];
+                        }
+                        for(int z=0; z<divcrc.length; z++){
+                            if(z!=0&&z!=1&&z!=3&&z!=7){
+                                sinham[r]=divcrc[z];
+                                r++;
+                            }
+                        }
+                        for (int x=0;x<sinham.length;x++){
+                            cadena =cadena.append(sinham[x]);
+                        }
+                        int num=Integer.parseInt(cadena.toString(),2);
+                        char c = (char)num;
+                        System.out.println("El caracter es: "+c);
+                     }
+                } 
+                
                 break;
             }
             if(i==resto.length-1){
-                System.out.println("No hay error");
+                System.out.println("No existen errores");
                 for(int k=0; k<divcrc.length; k++){
                     divcrc[k]=dividendo[k];
                 }
@@ -119,11 +168,8 @@ public class App {
             }
         }
 
-
     }
-    
-    
-       private static void corregirErr(int ar[],int posErr) {
+    private static void corregirErr(int ar[],int posErr) {
     	for(int i =1; i<ar.length; i++) {
     		if(posErr == i) {
     			if(ar[i]==1) {
@@ -179,7 +225,6 @@ public class App {
 		return resul;
     	
     }
-
     static int[] divide(int dividendo[],int largo_p[], int resto[])//Metodo
      {
         int contador=0;
