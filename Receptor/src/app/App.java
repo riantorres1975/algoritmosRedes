@@ -91,7 +91,7 @@ public class App {
             if(resto[i]!=0)
             {
                 System.out.println("Error su resto no es 0");
-                hammingError(divcrc, 4,p);
+                posErr =hammingError(divcrc, 4,p);
                 corregirErr(divcrc,posErr);
                /* for(int k=0; k<divcrc.length; k++){
                     divcrc[k]=dividendo[k];
