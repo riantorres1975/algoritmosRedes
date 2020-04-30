@@ -114,6 +114,65 @@ public class App {
                 System.out.println("Opcion no valida");
         }
     }
+    
+    
+       private static void corregirErr(int ar[],int posErr) {
+    	for(int i =1; i<ar.length; i++) {
+    		if(posErr == i) {
+    			if(ar[i]==1) {
+    				ar[i]=0;
+    			}else {
+    				ar[i]=1;
+    			}
+    		}
+    		System.out.print(ar[i]);
+    	}
+    	System.out.println();
+    	System.out.print("Error solucionado...!");
+    }
+
+    private static int hammingError(int[] ar, int r,int p) {
+		int suma = 0;
+		int resul =0;
+		String cadena = "";
+	
+		for (int i = 0; i < r; i++) {
+			int x = (int)Math.pow(2, i); 
+			for (int j = 1; j < ar.length; j++) { 
+				if (((j >> i) & 1) == 1) { 
+						if (x != j) {
+							//System.out.println("arreglo pos x= " + ar[x] + "  ^ j= " + ar[j] + " ");
+							suma +=ar[j];
+							if(ar[x] == ar[j]) {
+								ar[x] = ar[j];
+							}
+						}
+				} 
+			} 
+			suma+=ar[x];
+			
+		
+				if(suma%2==0) {
+					cadena+="0";
+				}else {
+					cadena+="1";
+				}
+			//System.out.println("r" + x + " = "+ ar[x]);
+			suma = 0;
+		
+		} 
+		String cadAux="";
+		for (int x=cadena.length()-1;x>=0;x--) {
+			cadAux = cadAux+ cadena.charAt(x);
+		}
+		resul = Integer.parseInt(cadAux,2);
+		
+		//System.out.print(cadAux + '\n');
+		//System.out.print(resul);
+		return resul;
+    	
+    }
+
     static int[] divide(int dividendo[],int largo_p[], int resto[])//Metodo
      {
         int contador=0;
