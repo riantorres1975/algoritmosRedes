@@ -35,8 +35,20 @@ public class App {
         System.out.println("2. Impar");
         System.out.print("Opcion: ");
         int OpcP;
+        int p = 0;
         final Scanner OpcScan=new Scanner(System.in);
         OpcP=OpcScan.nextInt();
+        
+        switch(OpcP){
+        	case 1:
+        		p=0;
+        		break;
+        	case 2: 
+        		p=1;
+        		break;
+        	default:
+        		System.out.println("Opcion no valida");
+        }
 
         for(int i=0; i<cantdatos; i++){            
             String auh=Character.toString(values[i]);
@@ -70,6 +82,8 @@ public class App {
         divcrc=new int[rescrc];//espacio donde se guardara el dato sin los bits extras
         sinham=new int[8];
         int q=0;
+        int posErr=0;
+       
         StringBuffer cadena = new StringBuffer();
 
         for(int i=0; i< resto.length; i++)
@@ -77,10 +91,12 @@ public class App {
             if(resto[i]!=0)
             {
                 System.out.println("Error su resto no es 0");
-                for(int k=0; k<divcrc.length; k++){
+                hammingError(divcrc, 4,p);
+                corregirErr(divcrc,posErr);
+               /* for(int k=0; k<divcrc.length; k++){
                     divcrc[k]=dividendo[k];
                     System.out.print(divcrc[k]);
-                }
+                }*/
                 break;
             }
             if(i==resto.length-1){
@@ -103,16 +119,7 @@ public class App {
             }
         }
 
-        switch(OpcP){
-            case 1:
-                
-                break;
-            case 2: 
-                
-                break;
-            default:
-                System.out.println("Opcion no valida");
-        }
+
     }
     
     
